@@ -115,7 +115,7 @@ void deleteAtPos(int position)
 {
     if(head==NULL)
     {
-        printf("Nothing to delete\m");
+        printf("Nothing to delete\n");
         return;
     }
     if(position>countList())
