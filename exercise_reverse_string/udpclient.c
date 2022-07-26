@@ -9,9 +9,11 @@ int main(){
     
     const char *port="8082";
     struct addrinfo hint,*server;
-    const char *message="Muhammad Isa Hassan";
     const int buf_len=1024;
+      char message[buf_len];
     char buffer[buf_len];
+    printf("Please enter the message\n");
+    fgets(message,buf_len,stdin);
     //configure server
     memset(&hint,0,sizeof(struct addrinfo));
     hint.ai_family=AF_INET;
