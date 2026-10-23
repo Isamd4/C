@@ -1,0 +1,31 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install MySQL client library
+        run: sudo apt-get update && sudo apt-get install -y default-libmysqlclient-dev
+      - name: Build all projects
+        run: |
+          for makefile in $(find . -name makefile | sort); do
+            dir=$(dirname "$makefile")
+            echo "::group::$dir"
+            make -C "$dir"
+            echo "::endgroup::"
+          done
+      - name: Smoke test
+        run: |
+          echo 5 | ./data_structures/singly_linked_list/singly_linked_list
+          echo 5 | ./data_structures/doubly_linked_list/doubly_linked_list
+          cd network_programming
+          timeout 10 ./udp/udpserver & sleep 1
+          timeout 10 ./udp/udpclientnoconnect
+          timeout 10 ./tcp/exercisetcpserver & sleep 1
+          timeout 10 ./tcp/exercisetcpclient

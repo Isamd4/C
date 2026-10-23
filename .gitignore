@@ -1,0 +1,47 @@
+# Build outputs
+*.o
+*.out
+*.exe
+data_structures/doubly_linked_list/doubly_linked_list
+data_structures/singly_linked_list/singly_linked_list
+lecturer_attendance_system/lecturer_attendance_system
+network_programming/basics/getaddrinfo
+network_programming/basics/newsock
+network_programming/basics/tcpaccept
+network_programming/basics/tcplisten
+network_programming/basics/tcpserverbind
+network_programming/concurrent_server/Practice
+network_programming/concurrent_server/PracticeClient
+network_programming/exercise_reverse_string/udpclient
+network_programming/exercise_reverse_string/udpserver
+network_programming/maintaining_connection/tcpclientmaintain
+network_programming/maintaining_connection/tcpservermaintain
+network_programming/maintaining_connection/udpclientmaintain
+network_programming/maintaining_connection/udpservermaintain
+network_programming/pre_chat_server/tcpclientgetname
+network_programming/pre_chat_server/tcpservergetclientname
+network_programming/pre_chat_server/udpservergetnameofclient
+network_programming/student_records_sql/myclient
+network_programming/student_records_sql/serverconnectedtosql
+network_programming/tcp/dualstacktcpserver
+network_programming/tcp/exercisetcpclient
+network_programming/tcp/exercisetcpserver
+network_programming/tcp/tcpclient
+network_programming/tcp/tcpserverreceive
+network_programming/tcp/tcpserversend
+network_programming/udp/udpclientconnect
+network_programming/udp/udpclientnoconnect
+network_programming/udp/udpserver
+
+# Scratch file the attendance system writes while saving
+lecturer_attendance_system/temporary.txt
+
+# Editor / OS files
+.vscode/
+.idea/
+*.cbp
+*.depend
+bin/
+obj/
+*~
+.DS_Store
