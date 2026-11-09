@@ -7,9 +7,9 @@
 
 A collection of C programs I wrote while learning the language: linked lists
 built from scratch, a file-backed attendance system, and a step-by-step tour of
-socket programming that ends with a client/server talking to MySQL. They are
-learning exercises, not production code, so feel free to read, copy, and adapt
-them.
+socket programming that ends with a client/server talking to MySQL, and a first
+play with processes and pipes. They are learning exercises, not production
+code, so feel free to read, copy, and adapt them.
 
 ## Contents
 
@@ -18,6 +18,7 @@ them.
 | [`data_structures/`](data_structures/) | Linked lists | `malloc`/`free`, pointers, singly and doubly linked lists |
 | [`lecturer_attendance_system/`](lecturer_attendance_system/) | Console attendance tracker | structs, menus, file I/O, CSV parsing with `strtok` |
 | [`network_programming/`](network_programming/) | Socket programming | `getaddrinfo`, TCP and UDP clients/servers, IPv6 dual stack, MySQL C API |
+| [`processes_threads/`](processes_threads/) | Processes and pipes | `fork`, `pipe`, `dup2`, `STDOUT_FILENO`, `waitpid` |
 
 ```
 .
@@ -25,15 +26,17 @@ them.
 │   ├── singly_linked_list/     # append, prepend, insert, delete, reverse
 │   └── doubly_linked_list/     # same operations with prev pointers
 ├── lecturer_attendance_system/ # add/view/edit/delete students, mark attendance
-└── network_programming/
-    ├── basics/                 # getaddrinfo → socket → bind → listen → accept
-    ├── tcp/                    # TCP clients and servers, tiny HTTP server
-    ├── udp/                    # UDP with and without connect()
-    ├── exercise_reverse_string/
-    ├── maintaining_connection/ # servers that keep serving in a loop
-    ├── pre_chat_server/        # find out who the client is (getnameinfo)
-    ├── student_records_sql/    # TCP client/server backed by MySQL
-    └── concurrent_server/      # start of a multi-client server (C++)
+├── network_programming/
+│   ├── basics/                 # getaddrinfo → socket → bind → listen → accept
+│   ├── tcp/                    # TCP clients and servers, tiny HTTP server
+│   ├── udp/                    # UDP with and without connect()
+│   ├── exercise_reverse_string/
+│   ├── maintaining_connection/ # servers that keep serving in a loop
+│   ├── pre_chat_server/        # find out who the client is (getnameinfo)
+│   ├── student_records_sql/    # TCP client/server backed by MySQL
+│   └── concurrent_server/      # start of a multi-client server (C++)
+└── processes_threads/
+    └── process/                # parent reads what the child prints through a pipe
 ```
 
 ## Highlights
@@ -81,6 +84,7 @@ depend on older C behaviour. The makefiles take care of this:
 | `lecturer_attendance_system` | `-std=gnu99` | It uses `gets()`, which was removed in C11; glibc only declares it for older standards. |
 | `student_records_sql/` | `libmysqlclient` (`mysql_config` on the `PATH`) and a MySQL server | See its [README](network_programming/student_records_sql/). |
 | `concurrent_server/` | a C++ compiler | Written in C++. |
+| `processes_threads/process/` | CMake 3.20+ | Built with CMake instead of a makefile. See its [README](processes_threads/process/). |
 
 Everything builds on GCC 11.4 (Ubuntu 22.04 / WSL2) and in CI on
 `ubuntu-latest`. Expect compiler warnings: they are left in on purpose.
