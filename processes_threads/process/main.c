@@ -52,7 +52,7 @@ int main(){
         char message[1024];
         sprintf(message,"Hi, I am the child %d\r",getpid());
         // Lets now write the message, one char per second, to our (new) STDOUT_FILENO.
-        // Note: stdout chose its buffering the first time the master used it, before fork.
+        // stdout chose its buffering the first time the master used it, before fork.
         // On a terminal that is line buffered, and the slave inherits it, so every '\n' sends the
         // line into the pipe straight away, even though STDOUT_FILENO is now the pipe.
         // If the program's output is itself piped (./main | cat), stdout is fully buffered instead,
@@ -71,7 +71,6 @@ int main(){
         // let me also test write() directly on STDOUT_FILENO, this one skips the printf buffer
         // and goes straight into the pipe.
         // strlen(done) sends only the text, sizeof(done) would also send the '\0'.
-        // Note: done[31] fits a pid of up to 6 digits, a longer pid would not fit
         char done[31];
         sprintf(done,"Child %d, is done sending\n",getpid());
         write(STDOUT_FILENO,&done,strlen(done));
